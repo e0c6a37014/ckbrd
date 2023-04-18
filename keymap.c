@@ -250,7 +250,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 #endif  //END OLED config
 
-
+//RGB Layer control
 #ifdef RGBLIGHT_EFFECT_STATIC_GRADIENT
 layer_state_t layer_state_set_keymap(layer_state_t state) {
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT); //Solid color
