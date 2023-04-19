@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL, KC_LEFT, KC_DOWN, KC_RGHT,  KC_ENT,  KC_INS,                      KC_HOME,    KC_4,    KC_5,    KC_6,    KC_0,  KC_END,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,  KC_F13, KC_CAPS, KC_CALC,  KC_F14, KC_MPLY,                      KC_PGDN,    KC_7,    KC_8,    KC_9,   KC_NO, KC_FIND,
+      KC_LSFT,  KC_F13, KC_CAPS, KC_CALC,  KC_F14, KC_MPLY,                      KC_PGDN,    KC_7,    KC_8,    KC_9, SELWORD, KC_FIND,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LALT, _______,  KC_ENT,    KC_RCTL,   MO(3), RALT(KC_ENT)
                                       //`--------------------------'  `--------------------------'
@@ -55,11 +55,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Raise
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC, KC_GRV, KC_CIRC,RALT(KC_5),KC_PERC, KC_LPRN,                      KC_RPRN, KC_PEQL, KC_ASTR, XXXXXXX, KC_PIPE,  KC_DEL,
+       KC_ESC, KC_GRV, KC_CIRC,RALT(KC_5),KC_PERC, KC_LPRN,                      KC_RPRN, KC_PEQL, KC_AMPR, XXXXXXX, KC_PIPE,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,   KC_AT,  KC_DLR,   KC_LT, KC_MINS, KC_LBRC,                      KC_RBRC, KC_PLUS,   KC_GT, KC_AMPR, KC_BSLS, XXXXXXX,
+      KC_LCTL,   KC_AT,  KC_DLR,   KC_LT, KC_MINS, KC_LBRC,                      KC_RBRC, KC_PLUS,   KC_GT, KC_ASTR, KC_BSLS, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,KC_TILD,XXXXXXX,RALT(KC_K), KC_HASH, KC_LCBR,                      KC_RCBR, SELWORD, XXXXXXX, KC_UNDS, KC_EXLM,  KC_ENT,
+      KC_LSFT,KC_TILD,XXXXXXX,RALT(KC_K), KC_HASH, KC_LCBR,                      KC_RCBR, XXXXXXX, XXXXXXX, KC_UNDS, KC_EXLM,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI,   MO(3), CW_TOGG,     KC_SPC, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
