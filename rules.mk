@@ -1,4 +1,4 @@
-MOUSEKEY_ENABLE = yes    # Mouse keys
+NKRO_ENABLE = yes
 RGBLIGHT_ENABLE = yes    # Enable WS2812 RGB underlight.
 OLED_ENABLE     = yes
 OLED_DRIVER     = SSD1306
@@ -8,7 +8,7 @@ DEBOUNCE_TYPE = sym_eager_pk
 
 SRC += features/select_word.c
 
-# Size optimisations
+# Size optimization
 LTO_ENABLE = yes
 CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
@@ -16,4 +16,5 @@ SPACE_CADET_ENABLE = no
 GRAVE_ESCAPE_ENABLE = no
 MOUSEKEY_ENABLE = no
 MAGIC_ENABLE = no
-# Size optimisations END
+AUDIO_ENABLE = no
+MUSIC_ENABLE = no
