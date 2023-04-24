@@ -32,9 +32,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                         KC_H,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
+      KC_LCTL,    KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                         KC_H,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ESC,
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ESC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LALT,   MO(1),  KC_ENT,     KC_SPC,   MO(2), KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -145,7 +145,7 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
-    switch (layer_state) {                  //Might need to change to following: switch get_highest_layer(layer_state) {
+    switch (get_highest_layer(layer_state)) {                  //Might need to change to following: switch get_highest_layer(layer_state) {
         case L_BASE:
             oled_write_ln_P(PSTR("Default"), false);
             break;
@@ -229,14 +229,13 @@ void oled_render_logo(void) {
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
         oled_render_layer_state();
-        oled_render_keylog();
-    } else {
-        oled_render_logo();
-
+        // oled_render_keylog();    //Write last key hit
         led_t led_state = host_keyboard_led_state();  // caps lock stuff, prints CAPS on new line if caps led is on
 
         oled_set_cursor(0, 1);
         oled_write_P(led_state.caps_lock ? PSTR("CAPS") : PSTR("       "), false);
+    } else {
+        oled_render_logo();
     }
     return false;
 }
@@ -262,7 +261,7 @@ layer_state_t layer_state_set_keymap(layer_state_t state) {
             rgblight_sethsv_noeeprom(HSV_ORANGE);
             break;
         case L_RGB:
-            rgblight_sethsv_noeeprom(HSV_BLACK);
+            rgblight_sethsv_noeeprom(HSV_WHITE);
             break;
         default:  // for any other layers, or the default layer
             rgblight_mode(RGBLIGHT_MODE_STATIC_GRADIENT + 3);
