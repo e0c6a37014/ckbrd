@@ -41,13 +41,13 @@ static bool effect_adjust(effect_params_t* params) {
 
 static bool effect_game(effect_params_t* params) {
   RGB_MATRIX_USE_LIMITS(led_min, led_max);
-  rgb_matrix_set_color(16, 100, 30, 0);
-  rgb_matrix_set_color(18, 100, 30, 0);
-  rgb_matrix_set_color(19, 100, 30, 0);
-  rgb_matrix_set_color(22, 100, 30, 0);
+  rgb_matrix_set_color(16, 100, 20, 0);
+  rgb_matrix_set_color(18, 100, 20, 0);
+  rgb_matrix_set_color(19, 100, 20, 0);
+  rgb_matrix_set_color(22, 100, 20, 0);
 
-  rgb_matrix_set_color(32, 0, 0, 100);
-  rgb_matrix_set_color(5, 0, 0, 100);
+  rgb_matrix_set_color(32, 0, 0, 0);
+  rgb_matrix_set_color(5, 0, 0, 0);
 
   return rgb_matrix_check_finished_leds(led_max);
 }

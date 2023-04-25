@@ -82,7 +82,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // RGB Matrix Animation modes. Explicitly enabled
 // For full list of effects, see:
 // https://docs.qmk.fm/#/feature_rgb_matrix?id=rgb-matrix-effects
-#    define ENABLE_RGB_MATRIX_ALPHAS_MODS
+//#    define ENABLE_RGB_MATRIX_ALPHAS_MODS
 //#    define ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN
 //#    define ENABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT
 //#    define ENABLE_RGB_MATRIX_BREATHING
@@ -127,7 +127,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#    define ENABLE_RGB_MATRIX_MULTISPLASH
 //#    define ENABLE_RGB_MATRIX_SOLID_SPLASH
 //#    define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
-
+    
+    #undef ENABLE_RGB_MATRIX_ALPHAS_MODS
     #undef ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN
     #undef ENABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT
 
@@ -178,6 +179,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 #define OLED_BRIGHTNESS 10             //values from 0 to 255
 #define OLED_TIMEOUT 1000              //Timeout in ms
-#define OLED_FADE_OUT                   //Enable fadeout
-#define OLED_FADE_OUT_INTERVAL 0        //Fade out animation speed, values from 0 to 15
-
