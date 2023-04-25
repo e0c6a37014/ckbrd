@@ -42,21 +42,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #ifdef RGBLIGHT_ENABLE
-    #define RGBLIGHT_EFFECT_BREATHING
+    #undef RGBLIGHT_EFFECT_BREATHING
 //    #define RGBLIGHT_EFFECT_RAINBOW_MOOD
 //    #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
     #undef RGBLIGHT_EFFECT_RAINBOW_MOOD
     #undef RGBLIGHT_EFFECT_RAINBOW_SWIRL
 
     #define RGBLIGHT_EFFECT_SNAKE
-    #define RGBLIGHT_EFFECT_KNIGHT
-    #define RGBLIGHT_EFFECT_CHRISTMAS
-    #define RGBLIGHT_EFFECT_STATIC_GRADIENT
+    #undef RGBLIGHT_EFFECT_KNIGHT
+    #undef RGBLIGHT_EFFECT_CHRISTMAS
+    #undef RGBLIGHT_EFFECT_STATIC_GRADIENT
 //    #define RGBLIGHT_EFFECT_RGB_TEST
     #undef RGBLIGHT_EFFECT_RGB_TEST
 
-    #define RGBLIGHT_EFFECT_ALTERNATING
-    #define RGBLIGHT_EFFECT_TWINKLE
+    #undef RGBLIGHT_EFFECT_ALTERNATING
+    #undef RGBLIGHT_EFFECT_TWINKLE
     #define RGBLIGHT_LIMIT_VAL 120
     #define RGBLIGHT_HUE_STEP 10
     #define RGBLIGHT_SAT_STEP 17
@@ -85,7 +85,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define ENABLE_RGB_MATRIX_ALPHAS_MODS
 //#    define ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN
 //#    define ENABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT
-#    define ENABLE_RGB_MATRIX_BREATHING
+//#    define ENABLE_RGB_MATRIX_BREATHING
 //#    define ENABLE_RGB_MATRIX_BAND_SAT
 //#    define ENABLE_RGB_MATRIX_BAND_VAL
 //#    define ENABLE_RGB_MATRIX_BAND_PINWHEEL_SAT
@@ -94,7 +94,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#    define ENABLE_RGB_MATRIX_BAND_SPIRAL_VAL
 //#    define ENABLE_RGB_MATRIX_CYCLE_ALL
 //#    define ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
-    //#    define ENABLE_RGB_MATRIX_CYCLE_UP_DOWN
+//#    define ENABLE_RGB_MATRIX_CYCLE_UP_DOWN
 //#    define ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON
 //#    define ENABLE_RGB_MATRIX_CYCLE_OUT_IN
 //#    define ENABLE_RGB_MATRIX_CYCLE_OUT_IN_DUAL
@@ -103,9 +103,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#    define ENABLE_RGB_MATRIX_DUAL_BEACON
 //#    define ENABLE_RGB_MATRIX_RAINBOW_BEACON
 //#    define ENABLE_RGB_MATRIX_RAINBOW_PINWHEELS
-#    define ENABLE_RGB_MATRIX_RAINDROPS
+//#    define ENABLE_RGB_MATRIX_RAINDROPS
 //#    define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
-#    define ENABLE_RGB_MATRIX_HUE_BREATHING
+//#    define ENABLE_RGB_MATRIX_HUE_BREATHING
 //#    define ENABLE_RGB_MATRIX_HUE_PENDULUM
 //#    define ENABLE_RGB_MATRIX_HUE_WAVE
 //#    define ENABLE_RGB_MATRIX_PIXEL_RAIN
@@ -172,11 +172,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #undef ENABLE_RGB_MATRIX_MULTISPLASH
     #undef ENABLE_RGB_MATRIX_SOLID_SPLASH
     #undef ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
+
 #endif
 
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
-#define OLED_BRIGHTNESS 128             //values from 0 to 255
-#define OLED_TIMEOUT 60000              //Timeout in ms
+#define OLED_BRIGHTNESS 10             //values from 0 to 255
+#define OLED_TIMEOUT 1000              //Timeout in ms
 #define OLED_FADE_OUT                   //Enable fadeout
-#define OLED_FADE_OUT_INTERVAL 8        //Fade out animation speed, values from 0 to 15
+#define OLED_FADE_OUT_INTERVAL 0        //Fade out animation speed, values from 0 to 15
 

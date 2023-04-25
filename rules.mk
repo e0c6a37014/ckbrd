@@ -1,8 +1,9 @@
 NKRO_ENABLE = yes
-RGBLIGHT_ENABLE = yes    # Enable WS2812 RGB underlight.
+RGBLIGHT_ENABLE = no   # Enable WS2812 RGB underlight.
 OLED_ENABLE     = yes
 OLED_DRIVER     = SSD1306
 RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_CUSTOM_USER = yes
 CAPS_WORD_ENABLE = yes
 DEBOUNCE_TYPE = sym_eager_pk
 

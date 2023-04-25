@@ -43,11 +43,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Lower
   [1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC, KC_MPRV,   KC_UP, KC_MNXT, KC_PSCR, KC_EXEC,                      KC_PGUP,    KC_1,    KC_2,    KC_3, KC_PAUS,  KC_DEL,
+       KC_ESC, KC_MPRV, KC_MPRV,   KC_UP, KC_MNXT, KC_PSCR,                      KC_PGUP,    KC_1,    KC_2,    KC_3,  KC_DEL, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, KC_LEFT, KC_DOWN, KC_RGHT,  KC_ENT,  KC_INS,                      KC_HOME,    KC_4,    KC_5,    KC_6,    KC_0,  KC_END,
+      KC_LCTL, KC_LSFT, KC_LEFT, KC_DOWN, KC_RGHT,  KC_INS,                      KC_HOME,    KC_4,    KC_5,    KC_6,    KC_0,  KC_END,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,  KC_F13, KC_CAPS, KC_CALC,  KC_F14, KC_MPLY,                      KC_PGDN,    KC_7,    KC_8,    KC_9, SELWORD, KC_FIND,
+      KC_CAPS,  KC_F13, KC_F14, KC_CALC,   KC_SPC, KC_MPLY,                      KC_PGDN,    KC_7,    KC_8,    KC_9, SELWORD, KC_FIND,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LALT, _______,  KC_ENT,    KC_RCTL,   MO(3), RALT(KC_ENT)
                                       //`--------------------------'  `--------------------------'
@@ -55,11 +55,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Raise
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC, KC_GRV, KC_CIRC,RALT(KC_5),KC_PERC, KC_LPRN,                      KC_RPRN, KC_PEQL, KC_AMPR, XXXXXXX, KC_PIPE,  KC_DEL,
+       KC_ESC, KC_GRV, KC_CIRC,RALT(KC_5),KC_PERC, KC_LPRN,                      KC_RPRN, KC_ASTR, KC_AMPR, KC_UNDS, KC_PIPE,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,   KC_AT,  KC_DLR,   KC_LT, KC_MINS, KC_LBRC,                      KC_RBRC, KC_PLUS,   KC_GT, KC_ASTR, KC_BSLS, XXXXXXX,
+      KC_LCTL,   KC_AT,  KC_DLR,   KC_LT, KC_MINS, KC_LBRC,                      KC_RBRC, KC_PLUS,   KC_GT, KC_ASTR, KC_BSLS,  KC_EQL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,KC_TILD,XXXXXXX,RALT(KC_K), KC_HASH, KC_LCBR,                      KC_RCBR, XXXXXXX, XXXXXXX, KC_UNDS, KC_EXLM,  KC_ENT,
+      KC_CAPS,KC_TILD,XXXXXXX,RALT(KC_K), KC_HASH, KC_LCBR,                      KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, KC_EXLM,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI,   MO(3), CW_TOGG,     KC_SPC, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_PDOT,   KC_P1,   KC_P2,   KC_P3,   KC_P4,   KC_P5,                        KC_P6,   KC_P7,   KC_P8,   KC_P9,   KC_P0, KC_PENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, _______, XXXXXXX,    XXXXXXX, _______, XXXXXXX
+                                          XXXXXXX, _______, XXXXXXX,    XXXXXXX, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
   ),
     //RGB Setup
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,RGB_RMOD, RGB_SAD, RGB_HUD, RGB_SPD, RGB_VAD,                      BL_DOWN, BL_TOGG, BL_STEP, BL_BRTG, XXXXXXX,  BL_OFF,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  EE_CLR, QK_BOOT,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX,   TO(0), XXXXXXX,    XXXXXXX,   TO(0), XXXXXXX
                                       //`--------------------------'  `--------------------------'
@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ESC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   MO(1),  KC_ENT,     KC_SPC,   MO(2), KC_RALT
+                                          KC_LGUI,   TO(0),  KC_ENT,     KC_SPC,   TO(0), KC_RALT
                                       //`--------------------------'  `--------------------------'
   ),
     //Game
@@ -145,9 +145,9 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
-    switch (get_highest_layer(layer_state)) {                  //Might need to change to following: switch get_highest_layer(layer_state) {
+    switch (get_highest_layer(layer_state)) {
         case L_BASE:
-            oled_write_ln_P(PSTR("Default"), false);
+            oled_write_ln_P(PSTR("_"), false);
             break;
         case L_LOWER:
             oled_write_ln_P(PSTR("Lower"), false);
@@ -229,9 +229,8 @@ void oled_render_logo(void) {
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
         oled_render_layer_state();
-        // oled_render_keylog();    //Write last key hit
-        led_t led_state = host_keyboard_led_state();  // caps lock stuff, prints CAPS on new line if caps led is on
-
+        //Caps Lock status
+        led_t led_state = host_keyboard_led_state();
         oled_set_cursor(0, 1);
         oled_write_P(led_state.caps_lock ? PSTR("CAPS") : PSTR("       "), false);
     } else {
@@ -250,24 +249,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif  //END OLED config
 
 //RGB Layer control
-#ifdef RGBLIGHT_EFFECT_STATIC_GRADIENT
-layer_state_t layer_state_set_keymap(layer_state_t state) {
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT); //Solid color
+layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
-        case L_QWERTY:
-            rgblight_sethsv_noeeprom(HSV_GOLD);
-            break;
-        case L_GAME:
-            rgblight_sethsv_noeeprom(HSV_ORANGE);
-            break;
-        case L_RGB:
-            rgblight_sethsv_noeeprom(HSV_WHITE);
-            break;
-        default:  // for any other layers, or the default layer
-            rgblight_mode(RGBLIGHT_MODE_STATIC_GRADIENT + 3);
-            rgblight_sethsv(HSV_WHITE);
-            break;
+    case L_LOWER:
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_effect_lower);
+        break;
+    case L_RAISE:
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_effect_raise);
+        break;
+    case L_ADJUST:
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_effect_adjust);
+        break;
+    case L_QWERTY:
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_effect_qwerty);
+        break;
+    case L_GAME:
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_effect_game);
+        break;
+    default:
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_default_effect);
+        break;
     }
-    return state;
+
+  return state;
 }
-#endif
+
+//Caps Lock indicator 
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    if (host_keyboard_led_state().caps_lock) {
+                rgb_matrix_set_color(3, 100, 100, 95);
+                rgb_matrix_set_color(2, 100, 100, 95);
+    }
+    return false;
+}
