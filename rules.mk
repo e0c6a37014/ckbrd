@@ -4,9 +4,9 @@ OLED_ENABLE     = yes
 OLED_DRIVER     = SSD1306
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_CUSTOM_USER = yes
-CAPS_WORD_ENABLE = yes
 DEBOUNCE_TYPE = sym_eager_pk
-
+CAPS_WORD_ENABLE = yes
+TAP_DANCE_ENABLE = no
 SRC += features/select_word.c
 
 # Size optimization

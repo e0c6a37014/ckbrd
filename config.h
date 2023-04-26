@@ -29,15 +29,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define EE_HANDS
 
 #define LAYER_STATE_8BIT
+#define DEBOUNCE 8
+#define TAPPING_TOGGLE 1
+#define TAPPING_TERM 99
+#define HOLD_ON_OTHER_KEY_PRESS
 
-#define DEBOUNCE 5
+#define CAPS_WORD_IDLE_TIMEOUT 2000
 
-#define NO_ACTION_TAPPING
 //#define QUICK_TAP_TERM 0
-//#define TAPPING_TERM 100
-
 #define NO_ACTION_ONESHOT
-
 #define NO_MUSIC_MODE
 
 
@@ -133,7 +133,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #undef ENABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT
 
     #undef ENABLE_RGB_MATRIX_BAND_SAT
-    #undef ENABLE_RGB_MATRIX_BAND_VAL
+#define ENABLE_RGB_MATRIX_BAND_VAL
     #undef ENABLE_RGB_MATRIX_BAND_PINWHEEL_SAT
     #undef ENABLE_RGB_MATRIX_BAND_PINWHEEL_VAL
     #undef ENABLE_RGB_MATRIX_BAND_SPIRAL_SAT
@@ -142,20 +142,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #undef ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
     #undef ENABLE_RGB_MATRIX_CYCLE_UP_DOWN
     #undef ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON
-    #undef ENABLE_RGB_MATRIX_CYCLE_OUT_IN
+#define ENABLE_RGB_MATRIX_CYCLE_OUT_IN
     #undef ENABLE_RGB_MATRIX_CYCLE_OUT_IN_DUAL
     #undef ENABLE_RGB_MATRIX_CYCLE_PINWHEEL
     #undef ENABLE_RGB_MATRIX_CYCLE_SPIRAL
     #undef ENABLE_RGB_MATRIX_DUAL_BEACON
     #undef ENABLE_RGB_MATRIX_RAINBOW_BEACON
     #undef ENABLE_RGB_MATRIX_RAINBOW_PINWHEELS
-
+    #undef ENABLE_RGB_MATRIX_RAINDROPS
     #undef ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
 
     #undef ENABLE_RGB_MATRIX_HUE_PENDULUM
     #undef ENABLE_RGB_MATRIX_HUE_WAVE
-    #undef ENABLE_RGB_MATRIX_PIXEL_FRACTAL
-    #undef ENABLE_RGB_MATRIX_PIXEL_FLOW
+#define ENABLE_RGB_MATRIX_PIXEL_FRACTAL
+#define ENABLE_RGB_MATRIX_PIXEL_FLOW
     #undef ENABLE_RGB_MATRIX_PIXEL_RAIN
 
     #undef ENABLE_RGB_MATRIX_TYPING_HEATMAP
@@ -178,4 +178,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 #define OLED_BRIGHTNESS 10             //values from 0 to 255
-#define OLED_TIMEOUT 1000              //Timeout in ms
+#define OLED_TIMEOUT 3000              //Timeout in ms
