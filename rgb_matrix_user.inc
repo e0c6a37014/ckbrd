@@ -56,10 +56,10 @@ static bool effect_game(effect_params_t* params) {
 static bool effect_qwerty(effect_params_t* params) {
   RGB_MATRIX_USE_LIMITS(led_min, led_max);
   for (uint8_t i = led_min; i < 6; i++) {
-    rgb_matrix_set_color(i, 7, 0, 70);
+    rgb_matrix_set_color(i, 3, 0, 20);
   }
   for (uint8_t i = 27; i < 33; i++) {
-    rgb_matrix_set_color(i, 10, 0, 80);
+    rgb_matrix_set_color(i, 3, 0, 20);
   }
   return rgb_matrix_check_finished_leds(led_max);
 }
