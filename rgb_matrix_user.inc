@@ -6,6 +6,7 @@ RGB_MATRIX_EFFECT(effect_adjust)
 RGB_MATRIX_EFFECT(effect_game)
 RGB_MATRIX_EFFECT(effect_qwerty)
 RGB_MATRIX_EFFECT(effect_caps_word)
+RGB_MATRIX_EFFECT(effect_caps_word_default)
 
 // Define effects inside the `RGB_MATRIX_CUSTOM_EFFECT_IMPLS` ifdef block
 #ifdef RGB_MATRIX_CUSTOM_EFFECT_IMPLS
@@ -65,6 +66,13 @@ static bool effect_qwerty(effect_params_t* params) {
 }
 
 static bool effect_caps_word(effect_params_t* params) {
+  RGB_MATRIX_USE_LIMITS(led_min, led_max);
+  rgb_matrix_set_color(0, 75, 40, 30);
+  return rgb_matrix_check_finished_leds(led_max);
+}
+
+
+static bool effect_caps_word_default(effect_params_t* params) {
   RGB_MATRIX_USE_LIMITS(led_min, led_max);
   for (uint8_t i = led_min; i < led_max; i++) {
     rgb_matrix_set_color(i, 0, 0, 0);

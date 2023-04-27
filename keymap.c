@@ -313,7 +313,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_default_effect);
         }
         else {
-            rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_effect_caps_word);
+            rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_effect_caps_word_default);
         }
         break;
     }
@@ -324,15 +324,19 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 //Caps Lock indicator 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
-                rgb_matrix_set_color(3, 100, 85, 75);
-                rgb_matrix_set_color(2, 100, 85, 75);
+        rgb_matrix_set_color(3, 100, 85, 75);
+        rgb_matrix_set_color(2, 100, 85, 75);
     }
     return false;
 }
 //Caps Word indicator
 void caps_word_set_user(bool active) {
-    if (!active) {
-        // Do something when Caps Word deactivates.
+    if (active) {
+        // Turn on indicator light when Caps Word activates.
+        rgb_matrix_set_color(0, 75, 40, 30);
+    }
+        // Set RGB to default effect
+    else {
         rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_default_effect);
     }
 }
