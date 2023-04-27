@@ -43,8 +43,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLIGHT_EFFECT_BREATHING
-//    #define RGBLIGHT_EFFECT_RAINBOW_MOOD
-//    #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
     #undef RGBLIGHT_EFFECT_RAINBOW_MOOD
     #undef RGBLIGHT_EFFECT_RAINBOW_SWIRL
 
@@ -52,7 +50,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #undef RGBLIGHT_EFFECT_KNIGHT
     #undef RGBLIGHT_EFFECT_CHRISTMAS
     #undef RGBLIGHT_EFFECT_STATIC_GRADIENT
-//    #define RGBLIGHT_EFFECT_RGB_TEST
     #undef RGBLIGHT_EFFECT_RGB_TEST
 
     #undef RGBLIGHT_EFFECT_ALTERNATING
@@ -64,7 +61,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
-//#   define RGB_MATRIX_KEYPRESSES // reacts to keypresses
+//#   define RGB_MATRIX_KEYPRESSES // reacts ato keypresses
 // #   define RGB_MATRIX_KEYRELEASES // reacts to keyreleases (instead of keypresses)
 // #   define RGB_DISABLE_AFTER_TIMEOUT 0 // number of ticks to wait until disabling effects
 #   define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
@@ -131,7 +128,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #undef ENABLE_RGB_MATRIX_ALPHAS_MODS
     #undef ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN
     #undef ENABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT
-
+    #undef ENABLE_RGB_MATRIX_HUE_BREATHING
     #undef ENABLE_RGB_MATRIX_BAND_SAT
 #define ENABLE_RGB_MATRIX_BAND_VAL
     #undef ENABLE_RGB_MATRIX_BAND_PINWHEEL_SAT
@@ -155,7 +152,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #undef ENABLE_RGB_MATRIX_HUE_PENDULUM
     #undef ENABLE_RGB_MATRIX_HUE_WAVE
 #define ENABLE_RGB_MATRIX_PIXEL_FRACTAL
-#define ENABLE_RGB_MATRIX_PIXEL_FLOW
+    #undef ENABLE_RGB_MATRIX_PIXEL_FLOW
     #undef ENABLE_RGB_MATRIX_PIXEL_RAIN
 
     #undef ENABLE_RGB_MATRIX_TYPING_HEATMAP
