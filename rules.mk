@@ -9,6 +9,8 @@ CAPS_WORD_ENABLE = yes
 TAP_DANCE_ENABLE = no
 SRC += features/select_word.c
 
+KEY_OVERRIDE_ENABLE = yes
+
 # Size optimization
 LTO_ENABLE = yes
 CONSOLE_ENABLE = no

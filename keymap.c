@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
 OSM(MOD_LCTL),OSM(MOD_LSFT),KC_LEFT,KC_DOWN,KC_RGHT,KC_LPRN,                     KC_RPRN, KC_PLUS, KC_MINS, KC_AMPR, KC_BSLS,  KC_EQL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CW_TOGG,  KC_F13,   KC_AT, KC_CALC,  KC_SPC, KC_LCBR,                     KC_RCBR, KC_ASTR,  KC_DLR, KC_CIRC, KC_EXLM, XXXXXXX,
+      CW_TOGG,  KC_F13,   KC_AT, KC_CALC,  KC_SPC, KC_LCBR,                     KC_RCBR,  KC_ASTR,  KC_DLR, KC_CIRC, KC_EXLM, SELWORD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_BSPC, _______,  KC_ENT,     KC_SPC,   TT(3), XXXXXXX
                                       //`--------------------------'  `--------------------------'
@@ -58,7 +58,7 @@ OSM(MOD_LCTL),OSM(MOD_LSFT),KC_LEFT,KC_DOWN,KC_RGHT,KC_LPRN,                    
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_CAPS,  KC_F11,   KC_F4,   KC_F5,   KC_F6,  KC_INS,                      KC_HOME,    KC_4,    KC_5,    KC_6,    KC_0,  KC_END,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
- OSM(MOD_LSFT), KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PAUS,                      KC_PGDN,    KC_7,    KC_8,    KC_9, SELWORD,  KC_ENT,
+ OSM(MOD_LSFT), KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PAUS,                      KC_PGDN,    KC_7,    KC_8,    KC_9, KC_PDOT,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                       OSM(MOD_LALT), TT(3), KC_LGUI,     KC_SPC, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -284,6 +284,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         set_keylog(keycode, record);
     }
+
     return true;
 }
 #endif  //END OLED config
@@ -299,6 +300,17 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
+
+#ifdef KEY_OVERRIDE_ENABLE
+//Key overrides
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_PDOT, KC_PCMM);
+
+// This globally defines all key overrides to be used
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &delete_key_override,
+    NULL // Null terminate the array of overrides!
+};
+#endif
 
 #ifdef RGB_MATRIX_ENABLE
 //RGB Layer control
