@@ -301,13 +301,13 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-#ifdef KEY_OVERRIDE_ENABLE
 //Key overrides
-const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_PDOT, KC_PCMM);
+#ifdef KEY_OVERRIDE_ENABLE
+const key_override_t pdot_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_PDOT, KC_COMM);
 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
-    &delete_key_override,
+    &pdot_key_override,
     NULL // Null terminate the array of overrides!
 };
 #endif
