@@ -60,7 +60,7 @@ OSM(MOD_LCTL),OSM(MOD_LSFT),KC_LEFT,KC_DOWN,KC_RGHT,KC_LPRN,                    
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
  OSM(MOD_LSFT), KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PAUS,                      KC_PGDN,    KC_7,    KC_8,    KC_9, SELWORD,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   TT(3), KC_LCTL,     KC_SPC, _______, KC_RALT
+                                      OSM(MOD_LALT), TT(3), KC_LGUI,     KC_SPC, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
   ),
     //Adjust
@@ -102,11 +102,11 @@ OSM(MOD_LCTL),OSM(MOD_LSFT),KC_LEFT,KC_DOWN,KC_RGHT,KC_LPRN,                    
     //Game
    [6] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_T,    KC_Y,                  RCS(KC_ESC), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LCA(KC_DEL),
+       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_T,    KC_Y,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_ESC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LALT,  KC_SPC,   MO(7),     XXXXXXX,  TO(0), KC_RGUI
                                       //`--------------------------'  `--------------------------'
