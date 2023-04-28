@@ -31,11 +31,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                         KC_H,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
+  OSM(MOD_LCTL),  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                         KC_H,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ESC,
+  OSM(MOD_LSFT),  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM, KC_DOT,  KC_SLSH,MT(MOD_LSFT, KC_ESC),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LALT,   TT(1),  KC_ENT,     KC_SPC,   TT(2), KC_RALT
+                                    OSM(MOD_LALT),   TT(1),  KC_ENT,     KC_SPC,   TT(2),OSM(MOD_RALT)
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_ESC, KC_TILD, KC_HASH,   KC_UP,   KC_LT, KC_LBRC,                      KC_RBRC,   KC_GT, KC_PERC, KC_UNDS, KC_PIPE,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, KC_LSFT, KC_LEFT, KC_DOWN, KC_RGHT, KC_LPRN,                      KC_RPRN, KC_PLUS, KC_MINS, KC_AMPR, KC_BSLS,  KC_EQL,
+OSM(MOD_LCTL),OSM(MOD_LSFT),KC_LEFT,KC_DOWN,KC_RGHT,KC_LPRN,                     KC_RPRN, KC_PLUS, KC_MINS, KC_AMPR, KC_BSLS,  KC_EQL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CW_TOGG,  KC_F13,   KC_AT, KC_CALC,  KC_SPC, KC_LCBR,                     KC_RCBR, KC_ASTR,  KC_DLR, KC_CIRC, KC_EXLM, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -54,11 +54,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Raise
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC, XXXXXXX, XXXXXXX, XXXXXXX, KC_PSCR, KC_PAUS,                      KC_PGUP,    KC_1,    KC_2,    KC_3,  KC_DEL, KC_BSPC,
+       KC_ESC,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PSCR,                      KC_PGUP,    KC_1,    KC_2,    KC_3,  KC_DEL, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX,  KC_INS, XXXXXXX,                      KC_HOME,    KC_4,    KC_5,    KC_6,    KC_0,  KC_END,
+      KC_CAPS,  KC_F11,   KC_F4,   KC_F5,   KC_F6,  KC_INS,                      KC_HOME,    KC_4,    KC_5,    KC_6,    KC_0,  KC_END,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PGDN,    KC_7,    KC_8,    KC_9, SELWORD,  KC_ENT,
+ OSM(MOD_LSFT), KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PAUS,                      KC_PGDN,    KC_7,    KC_8,    KC_9, SELWORD,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI,   TT(3), KC_LCTL,     KC_SPC, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -66,11 +66,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Adjust
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        TO(4),   TO(5),   KC_P1,   KC_P2,   KC_P3,   TO(6),                        TO(0),   KC_F1,   KC_F2,   KC_F3,  KC_F10, XXXXXXX,
+        TO(4),   TO(5),   KC_P1,   KC_P2,   KC_P3,   TO(6),                        TO(0), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,   KC_P0,   KC_P4,   KC_P5,   KC_P6, KC_PDOT,                      XXXXXXX,   KC_F4,   KC_F5,   KC_F6,  KC_F11, XXXXXXX,
+      XXXXXXX,   KC_P0,   KC_P4,   KC_P5,   KC_P6, KC_PDOT,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX,   KC_P7,   KC_P8,   KC_P9, XXXXXXX,                      XXXXXXX,   KC_F7,   KC_F8,   KC_F9,  KC_F12, KC_PENT,
+      XXXXXXX, XXXXXXX,   KC_P7,   KC_P8,   KC_P9, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX, _______,   TO(0),      TO(0), _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -92,9 +92,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+  OSM(MOD_LCTL),  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ESC,
+  OSM(MOD_LSFT),  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ESC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI,   TO(0),  KC_ENT,     KC_SPC,   TO(0), KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -288,8 +288,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 #endif  //END OLED config
 
+//Tapping term setup
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case TT(1):
+        case TT(2):
+        case TT(3):
+            return 60;
+        default:
+            return TAPPING_TERM;
+    }
+}
 
-
+#ifdef RGB_MATRIX_ENABLE
 //RGB Layer control
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
@@ -340,3 +351,4 @@ void caps_word_set_user(bool active) {
         rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_default_effect);
     }
 }
+#endif //End RGB Matrix config
