@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
   OSM(MOD_LCTL),  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                         KC_H,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  OSM(MOD_LSFT),  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM, KC_DOT,  KC_SLSH,MT(MOD_LSFT, KC_ESC),
+  OSM(MOD_LSFT),  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM, KC_DOT,  KC_SLSH,LSFT_T(KC_ESC),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                     OSM(MOD_LALT),   TT(1),  KC_ENT,     KC_SPC,   TT(2),OSM(MOD_RALT)
                                       //`--------------------------'  `--------------------------'
@@ -44,9 +44,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_ESC, KC_TILD, KC_HASH,   KC_UP,   KC_LT, KC_LBRC,                      KC_RBRC,   KC_GT, KC_PERC, KC_UNDS, KC_PIPE,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-OSM(MOD_LCTL),OSM(MOD_LSFT),KC_LEFT,KC_DOWN,KC_RGHT,KC_LPRN,                     KC_RPRN, KC_PLUS, KC_MINS, KC_AMPR, KC_BSLS,  KC_EQL,
+OSM(MOD_LCTL), CW_TOGG, KC_LEFT, KC_DOWN, KC_RGHT, KC_LPRN,                     KC_RPRN, KC_PLUS, KC_MINS, KC_AMPR, KC_BSLS,  KC_EQL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CW_TOGG,  KC_F13,   KC_AT, KC_CALC,  KC_SPC, KC_LCBR,                     KC_RCBR,  KC_ASTR,  KC_DLR, KC_CIRC, KC_EXLM, SELWORD,
+OSM(MOD_LSFT),  KC_F13,   KC_AT, KC_CALC,  KC_SPC, KC_LCBR,                     KC_RCBR,  KC_ASTR,  KC_DLR, KC_CIRC, KC_EXLM, SELWORD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_BSPC, _______,  KC_ENT,     KC_SPC,   TT(3), XXXXXXX
                                       //`--------------------------'  `--------------------------'
@@ -56,9 +56,9 @@ OSM(MOD_LCTL),OSM(MOD_LSFT),KC_LEFT,KC_DOWN,KC_RGHT,KC_LPRN,                    
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_ESC,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PSCR,                      KC_PGUP,    KC_1,    KC_2,    KC_3,  KC_DEL, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_CAPS,  KC_F11,   KC_F4,   KC_F5,   KC_F6,  KC_INS,                      KC_HOME,    KC_4,    KC_5,    KC_6,    KC_0,  KC_END,
+LCTL_T(KC_CAPS),KC_F11,   KC_F4,   KC_F5,   KC_F6,  KC_INS,                      KC_HOME,    KC_4,    KC_5,    KC_6,    KC_0,  KC_END,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
- OSM(MOD_LSFT), KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PAUS,                      KC_PGDN,    KC_7,    KC_8,    KC_9, KC_PDOT,  KC_ENT,
+OSM(MOD_LSFT),  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PAUS,                      KC_PGDN,    KC_7,    KC_8,    KC_9, KC_PDOT,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                       OSM(MOD_LALT), TT(3), KC_LGUI,     KC_SPC, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
