@@ -54,11 +54,11 @@ OSM(MOD_LSFT),  KC_F13,   KC_AT, KC_CALC,  KC_SPC, KC_LCBR,                     
     //Raise
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PSCR,                      KC_PGUP,    KC_1,    KC_2,    KC_3,  KC_DEL, KC_BSPC,
+       KC_ESC,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      KC_PGUP,    KC_7,    KC_8,    KC_9,  KC_DEL, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
 LCTL_T(KC_CAPS),KC_F11,   KC_F4,   KC_F5,   KC_F6,  KC_INS,                      KC_HOME,    KC_4,    KC_5,    KC_6,    KC_0,  KC_END,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-OSM(MOD_LSFT),  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PAUS,                      KC_PGDN,    KC_7,    KC_8,    KC_9, KC_PDOT,  KC_ENT,
+OSM(MOD_LSFT),  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                      KC_PGDN,    KC_1,    KC_2,    KC_3, KC_PDOT,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                       OSM(MOD_LALT), TT(3), KC_LGUI,     KC_SPC, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -66,11 +66,11 @@ OSM(MOD_LSFT),  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PAUS,                     
     //Adjust
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        TO(4),   TO(5),   KC_P1,   KC_P2,   KC_P3,   TO(6),                        TO(0), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        TO(4),   TO(5),   KC_P7,   KC_P8,   KC_P9,   TO(6),                        TO(0), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,   KC_P0,   KC_P4,   KC_P5,   KC_P6, KC_PDOT,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX,   KC_P7,   KC_P8,   KC_P9, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PENT,
+      XXXXXXX, XXXXXXX,   KC_P1,   KC_P2,   KC_P3, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX, _______,   TO(0),      TO(0), _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
