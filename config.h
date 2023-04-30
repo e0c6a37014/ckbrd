@@ -31,7 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LAYER_STATE_8BIT
 #define DEBOUNCE 8
 #define TAPPING_TOGGLE 1
-#define TAPPING_TERM 160
+#define TAPPING_TERM 180
 #define TAPPING_TERM_PER_KEY
 #define HOLD_ON_OTHER_KEY_PRESS
 #define ONESHOT_TIMEOUT 1200

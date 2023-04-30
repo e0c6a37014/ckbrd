@@ -295,7 +295,12 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case TT(1):
         case TT(2):
         case TT(3):
-            return 60;
+            return 75;
+        case OSM(MOD_LCTL):
+        case OSM(MOD_LSFT):
+        case OSM(MOD_LALT):
+        case OSM(MOD_RALT):
+            return 120;
         default:
             return TAPPING_TERM;
     }
@@ -340,7 +345,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         }
         break;
     }
-
   return state;
 }
 
