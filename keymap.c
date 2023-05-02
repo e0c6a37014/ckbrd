@@ -293,15 +293,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //Tapping term setup
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case TT(1):
-        case TT(2):
-        case TT(3):
-            return 75;
         case OSM(MOD_LCTL):
         case OSM(MOD_LSFT):
         case OSM(MOD_LALT):
         case OSM(MOD_RALT):
             return 120;
+        case LSFT_T(KC_ESC):
+            return 180;
         default:
             return TAPPING_TERM;
     }
