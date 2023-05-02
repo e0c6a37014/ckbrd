@@ -172,7 +172,7 @@ void oled_render_layer_state(void) {
     }
 }
 
-
+/*
 char keylog_str[24] = {};
 
 const char code_to_name[60] = {
@@ -201,8 +201,9 @@ void oled_render_keylog(void) {
     oled_write(keylog_str, false);
 }
 
+
 void render_bootmagic_status(bool status) {
-    /* Show Ctrl-Gui Swap options */
+    // Show Ctrl-Gui Swap options 
     static const char PROGMEM logo[][2][3] = {
         {{0x97, 0x98, 0}, {0xb7, 0xb8, 0}},
         {{0x95, 0x96, 0}, {0xb5, 0xb6, 0}},
@@ -224,7 +225,7 @@ void oled_render_logo(void) {
         0};
     oled_write_P(crkbd_logo, false);
 }
-
+*/
 
 static const char image [] PROGMEM = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0xf8, 0x1c, 0x0e, 0x06, 
@@ -280,11 +281,11 @@ bool oled_task_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_select_word(keycode, record, SELWORD)) { return false; }
+    if (!process_select_word(keycode, record, SELWORD)) { return false; }/*
     if (record->event.pressed) {
         set_keylog(keycode, record);
     }
-
+*/
     return true;
 }
 #endif  //END OLED config
