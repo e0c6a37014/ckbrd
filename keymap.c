@@ -42,11 +42,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Lower
   [1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------------------.                            ,-----------------------------------------------------------------------.
-          KC_ESC,    KC_TILD,    KC_HASH,      KC_UP,      KC_LT,    KC_LBRC,                                 KC_RBRC,      KC_GT,    KC_PERC,    KC_UNDS,    KC_PIPE,     KC_DEL,
+          KC_ESC,    KC_TILD,    KC_HASH,      KC_UP,    XXXXXXX,LT(0,KC_LBRC),                         LT(0,KC_RBRC),    KC_AMPR,    KC_ASTR,    KC_UNDS,    KC_PIPE,     KC_DEL,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-   OSM(MOD_LCTL),    CW_TOGG,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_LPRN,                                 KC_RPRN,    KC_PLUS,    KC_MINS,    KC_AMPR,    KC_BSLS,     KC_EQL,
+   OSM(MOD_LCTL),    CW_TOGG,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_LPRN,                                 KC_RPRN,    KC_PLUS,    KC_PERC,    KC_MINS,    KC_BSLS,     KC_EQL,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-   OSM(MOD_LSFT),     KC_F13,      KC_AT,    KC_CALC,     KC_SPC,    KC_LCBR,                                 KC_RCBR,    KC_ASTR,     KC_DLR,    KC_CIRC,    KC_EXLM,    SELWORD,
+   OSM(MOD_LSFT),     KC_F13,      KC_AT,    KC_CALC,     KC_SPC,      KC_LT,                                   KC_GT,    XXXXXXX,     KC_DLR,    KC_CIRC,    KC_EXLM,    SELWORD,
   //|-----------+-----------+-----------+-----------+-----------+-----------+-----------|    |-----------+-----------+-----------+-----------+-----------+-----------+-----------|
                                                          KC_BSPC,    _______,     KC_ENT,          KC_SPC,      TT(3),    XXXXXXX
                                                   //`-----------------------------------'    `-----------------------------------'
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Raise
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------------------.                            ,-----------------------------------------------------------------------.
-          KC_ESC,     KC_F12,      KC_F7,      KC_F8,      KC_F9,    KC_PSCR,                                 KC_PGUP, LT(0,KC_7),       KC_8,       KC_9,    KC_BSPC,     KC_DEL,
+          KC_ESC,     KC_F12,      KC_F7,      KC_F8,      KC_F9,    KC_PSCR,                                 KC_PGUP, LT(0,KC_7), LT(0,KC_8),       KC_9,    KC_BSPC,     KC_DEL,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
  LCTL_T(KC_CAPS),     KC_F11,      KC_F4,      KC_F5,      KC_F6,     KC_INS,                                 KC_HOME, LT(0,KC_4), LT(0,KC_5), LT(0,KC_6),       KC_0,     KC_END,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
@@ -329,6 +329,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_8):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(KC_ASTR); // Intercept hold function to send "&"
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        // Below two cases configured this way due to issue registering KC_LBRC on tap instead of KC_LCBR
+        case LT(0,KC_LBRC):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_LCBR); // Intercept tap function to send "{"
+                return false;
+            }else if (record->event.pressed) {
+                tap_code16(KC_LBRC); // Intercept hold function to send "["
+            }
+            return false;
+        case LT(0,KC_RBRC):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_RCBR); // Intercept tap function to send "{"
+                return false;
+            }else if (record->event.pressed) {
+                tap_code16(KC_RBRC); // Intercept hold function to send "["
+            }
+            return false;
+
         case LT(0,KC_NO):
             if (record->tap.count && record->event.pressed) {
                 tap_code16(KC_DOT); // Intercept tap function to send Dot
