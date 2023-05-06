@@ -54,11 +54,11 @@ OSM(MOD_LSFT),  KC_F13,   KC_AT, KC_CALC,  KC_SPC, KC_LCBR,                     
     //Raise
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      KC_PGUP,    KC_7,    KC_8,    KC_9, KC_BSPC,  KC_DEL,
+       KC_ESC,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                     KC_PGUP,LT(0,KC_7),   KC_8,    KC_9, KC_BSPC,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-LCTL_T(KC_CAPS),KC_F11,   KC_F4,   KC_F5,   KC_F6,  KC_INS,                      KC_HOME,    KC_4,    KC_5,    KC_6,    KC_0,  KC_END,
+LCTL_T(KC_CAPS),KC_F11,   KC_F4,   KC_F5,   KC_F6,  KC_INS,                    KC_HOME,LT(0,KC_4),LT(0,KC_5),LT(0,KC_6),KC_0,  KC_END,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-OSM(MOD_LSFT),  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                      KC_PGDN,    KC_1,    KC_2,  KC_3,LT(0,KC_NO), KC_ENT,
+OSM(MOD_LSFT),  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                  KC_PGDN,LT(0,KC_1),LT(0,KC_2),LT(0,KC_3),LT(0,KC_NO), KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                       OSM(MOD_LALT), TT(3), KC_LGUI,     KC_SPC, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -287,9 +287,51 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 */
     switch (keycode) {
+        case LT(0,KC_1):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(KC_EXLM); // Intercept hold function to send "!"
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_2):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(KC_AT); // Intercept hold function to send "@"
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_3):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(KC_HASH); // Intercept hold function to send "#"
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_4):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(KC_DLR); // Intercept hold function to send "$"
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_5):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(KC_PERC); // Intercept hold function to send "%"
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_6):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(KC_CIRC); // Intercept hold function to send "^"
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+        case LT(0,KC_7):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(KC_AMPR); // Intercept hold function to send "&"
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
         case LT(0,KC_NO):
             if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_DOT); // Intercept tap function to send Numpad Dot
+                tap_code16(KC_DOT); // Intercept tap function to send Dot
             } else if (record->event.pressed) {
                 tap_code16(KC_COMM); // Intercept hold function to send Comma
             }
