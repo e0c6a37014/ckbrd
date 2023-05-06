@@ -365,25 +365,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 #endif  //END OLED config
 
-//per key tap-or-hold decision modes
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(0, KC_1):
-        case LT(0, KC_2):
-        case LT(0, KC_3):
-        case LT(0, KC_4):
-        case LT(0, KC_5):
-        case LT(0, KC_6):
-        case LT(0, KC_7):
-        case LT(0, KC_8):
-            // Do not select the hold action when another key is pressed.
-            return false;
-        default:
-            // Immediately select the hold action when another key is pressed.
-            return true;
-    }
-}
-
 //Tapping term setup
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
