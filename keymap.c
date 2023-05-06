@@ -376,10 +376,10 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
         case LT(0, KC_6):
         case LT(0, KC_7):
         case LT(0, KC_8):
-            // Immediately select the hold action when another key is pressed.
+            // Do not select the hold action when another key is pressed.
             return false;
         default:
-            // Do not select the hold action when another key is pressed.
+            // Immediately select the hold action when another key is pressed.
             return true;
     }
 }
