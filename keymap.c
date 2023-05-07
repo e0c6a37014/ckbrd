@@ -20,10 +20,32 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdio.h>
 #include "features/select_word.h"
 
+typedef struct {
+  bool is_press_action;
+  int state;
+} td_tap_t;
+
+enum {
+  SINGLE_TAP = 1,
+  SINGLE_HOLD = 2,
+  DOUBLE_TAP = 3,
+  DOUBLE_HOLD = 4,
+  TRIPLE_TAP = 5,
+  TRIPLE_HOLD = 6
+};
+
+
 //MACROS
 enum custom_keycodes {
   SELWORD = SAFE_RANGE, //Select Word - press Esc to make the macro tap right arrow → to deselect and leave the cursor at the end of the selection. Or press ← or → directly to deselect and choose which selection endpoint to jump the cursor to
+  ALT_OSL1 = 0  // Tap Dance Alt key - hold for alt, tap for one-shot layer hold, tap and hold for layer hold + alt hold
 };
+
+//Functions associated with tap dances
+int cur_dance (tap_dance_state_t *state);
+void alt_finished (tap_dance_state_t *state, void *user_data);
+void alt_reset (tap_dance_state_t *state, void *user_data);
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Colemak - base
@@ -35,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
    OSM(MOD_LSFT),       KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,                                    KC_K,       KC_M,    KC_COMM,     KC_DOT,    KC_SLSH,LSFT_T(KC_ESC),
   //|-----------+-----------+-----------+-----------+-----------+-----------+-----------|    |-----------+-----------+-----------+-----------+-----------+-----------+-----------|
-                                                   OSM(MOD_LALT),      TT(1),     KC_ENT,          KC_SPC,      TT(2),OSM(MOD_RALT)
+                                                    TD(ALT_OSL1),      TT(1),     KC_ENT,          KC_SPC,      TT(2),OSM(MOD_RALT)
                                                   //`-----------------------------------'    `-----------------------------------'
 
   ),
@@ -60,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
    OSM(MOD_LSFT),     KC_F10,      KC_F1,      KC_F2,      KC_F3,    KC_PAUS,                                 KC_PGDN, LT(0,KC_1), LT(0,KC_2), LT(0,KC_3),LT(0,KC_NO),     KC_ENT,
   //|-----------+-----------+-----------+-----------+-----------+-----------+-----------|    |-----------+-----------+-----------+-----------+-----------+-----------+-----------|
-                                                   OSM(MOD_LALT),      TT(3),    KC_LGUI,          KC_SPC,    _______,    KC_RALT
+                                                    TD(ALT_OSL1),      TT(3),    KC_LGUI,          KC_SPC,    _______,    KC_RALT
                                                   //`-----------------------------------'    `-----------------------------------'
   ),
     //Adjust
@@ -370,6 +392,69 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 #endif  //END OLED config
+
+
+//Tap Dance config
+int cur_dance (tap_dance_state_t *state) {
+  if (state->count == 1) {
+    if (state->pressed) return SINGLE_HOLD;
+    else return SINGLE_TAP;
+  }
+  else if (state->count == 2) {
+    if (state->pressed) return DOUBLE_HOLD;
+    else return DOUBLE_TAP;
+  }
+  else if (state->count == 3) {
+    if (state->interrupted || !state->pressed)  return TRIPLE_TAP;
+    else return TRIPLE_HOLD;
+  }
+  else return 8;
+}
+
+static td_tap_t alttap_state = {
+  .is_press_action = true,
+  .state = 0
+};
+
+void alt_finished (tap_dance_state_t *state, void *user_data) {
+  alttap_state.state = cur_dance(state);
+  switch (alttap_state.state) {
+    case SINGLE_TAP: set_oneshot_layer(2, ONESHOT_START); clear_oneshot_layer_state(ONESHOT_PRESSED); break;
+    case SINGLE_HOLD: register_code(KC_LALT); break;
+    case DOUBLE_TAP: set_oneshot_layer(2, ONESHOT_START); set_oneshot_layer(2, ONESHOT_PRESSED); break;
+    case DOUBLE_HOLD: register_code(KC_LALT); layer_on(2); break;
+  }
+}
+
+void alt_reset (tap_dance_state_t *state, void *user_data) {
+  switch (alttap_state.state) {
+    case SINGLE_TAP: break;
+    case SINGLE_HOLD: unregister_code(KC_LALT); break;
+    case DOUBLE_TAP: break;
+    case DOUBLE_HOLD: layer_off(2); unregister_code(KC_LALT); break;
+  }
+  alttap_state.state = 0;
+}
+
+tap_dance_action_t tap_dance_actions[] = {
+  [ALT_OSL1]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL,alt_finished, alt_reset)
+};
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+
+  switch (keycode) {
+    case KC_TRNS:
+    case KC_NO:
+      /* Always cancel one-shot layer when another key gets pressed */
+      if (record->event.pressed && is_oneshot_layer_active())
+      clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
+      return true;
+    default:
+      return true;
+  }
+  return true;
+}
+//END Tap Dance config
 
 //Tapping term setup
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {

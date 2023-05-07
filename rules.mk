@@ -6,7 +6,7 @@ RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_CUSTOM_USER = yes
 DEBOUNCE_TYPE = sym_eager_pk
 CAPS_WORD_ENABLE = yes
-TAP_DANCE_ENABLE = no
+TAP_DANCE_ENABLE = yes
 SRC += features/select_word.c
 
 KEY_OVERRIDE_ENABLE = yes
