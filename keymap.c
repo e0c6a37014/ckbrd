@@ -421,7 +421,7 @@ void alt_finished (tap_dance_state_t *state, void *user_data) {
   switch (alttap_state.state) {
     case SINGLE_TAP: set_oneshot_layer(2, ONESHOT_START); clear_oneshot_layer_state(ONESHOT_PRESSED); break;
     case SINGLE_HOLD: register_code(KC_LALT); break;
-    case DOUBLE_TAP: set_oneshot_layer(2, ONESHOT_START); set_oneshot_layer(2, ONESHOT_PRESSED); break;
+    //case DOUBLE_TAP: set_oneshot_layer(2, ONESHOT_START); set_oneshot_layer(2, ONESHOT_PRESSED); break;       //uncomment to use layer lock
     case DOUBLE_HOLD: register_code(KC_LALT); layer_on(2); break;
   }
 }
