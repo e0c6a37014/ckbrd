@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Colemak - base
   [0] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------------------.                            ,-----------------------------------------------------------------------.
-          KC_TAB,       KC_Q,       KC_W,       KC_F,       KC_P,       KC_G,                                    KC_J,       KC_L,       KC_U,       KC_Y,    KC_SCLN,    KC_BSPC,
+    LT(0,KC_TAB),       KC_Q,       KC_W,       KC_F,       KC_P,       KC_G,                                    KC_J,       KC_L,       KC_U,       KC_Y,    KC_SCLN,    KC_BSPC,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
    OSM(MOD_LCTL),       KC_A,       KC_R,       KC_S,       KC_T,       KC_D,                                    KC_H,       KC_N,       KC_E,       KC_I,       KC_O,    KC_QUOT,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //QWERTY
    [5] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------------------.                            ,-----------------------------------------------------------------------.
-          KC_TAB,       KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,                                    KC_Y,       KC_U,       KC_I,       KC_O,      KC_P,     KC_BSPC,
+    LT(0,KC_TAB),       KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,                                    KC_Y,       KC_U,       KC_I,       KC_O,      KC_P,     KC_BSPC,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
    OSM(MOD_LCTL),       KC_A,       KC_S,       KC_D,       KC_F,       KC_G,                                    KC_H,       KC_J,       KC_K,       KC_L,    KC_SCLN,    KC_QUOT,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
@@ -287,6 +287,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 */
     switch (keycode) {
+        case LT(0,KC_TAB):
+            if (!record->tap.count && record->event.pressed) {
+                tap_code16(KC_ESC); // Intercept hold function to send ESC
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
         case LT(0,KC_1):
             if (!record->tap.count && record->event.pressed) {
                 tap_code16(KC_EXLM); // Intercept hold function to send "!"
@@ -372,6 +378,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case OSM(MOD_LSFT):
         case OSM(MOD_LALT):
         case OSM(MOD_RALT):
+        case LT(0,KC_TAB):
         case LT(0,KC_1):
         case LT(0,KC_2):
         case LT(0,KC_3):
@@ -381,6 +388,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case LT(0,KC_7):
             return 120;
         case LSFT_T(KC_ESC):
+        case TT(1):
+        case TT(2):
+        case TT(3):
             return 180;
         default:
             return TAPPING_TERM;
