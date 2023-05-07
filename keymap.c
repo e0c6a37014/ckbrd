@@ -463,7 +463,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case OSM(MOD_LSFT):
         case OSM(MOD_LALT):
         case OSM(MOD_RALT):
-        case LT(0,KC_TAB):
         case LT(0,KC_1):
         case LT(0,KC_2):
         case LT(0,KC_3):
@@ -472,6 +471,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case LT(0,KC_6):
         case LT(0,KC_7):
             return 120;
+        case LT(0,KC_TAB):
         case LSFT_T(KC_ESC):
         case TT(1):
         case TT(2):
