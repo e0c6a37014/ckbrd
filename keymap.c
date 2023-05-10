@@ -38,7 +38,9 @@ enum {
 //MACROS
 enum custom_keycodes {
   SELWORD = SAFE_RANGE, //Select Word - press Esc to make the macro tap right arrow → to deselect and leave the cursor at the end of the selection. Or press ← or → directly to deselect and choose which selection endpoint to jump the cursor to
-  ALT_OSL1 = 0  // Tap Dance Alt key - hold for alt, tap for one-shot layer hold, tap and hold for layer hold + alt hold
+  ALT_OSL1 = 0,  // Tap Dance Alt key - hold for alt, tap for one-shot layer hold, tap and hold for layer hold + alt hold
+  MACRO_THAT_DOESNT_DO_ANYTHING,    // Empty macro needs to be here because the third macro doesn't work ever for some reason
+  M_EURSYM,
 };
 
 //Functions associated with tap dances
@@ -64,13 +66,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Lower
   [1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------------------.                            ,-----------------------------------------------------------------------.
-          KC_ESC,    KC_TILD,    KC_HASH,      KC_UP,    XXXXXXX,LT(0,KC_LBRC),                         LT(0,KC_RBRC),    KC_AMPR,    KC_ASTR,    KC_UNDS,    KC_PIPE,     KC_DEL,
+         QK_GESC,   M_EURSYM,    KC_HOME,      KC_UP,     KC_END,LT(0,KC_LBRC),                         LT(0,KC_RBRC),    KC_AMPR,    KC_ASTR,    KC_UNDS,    KC_PIPE,     KC_DEL,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
    OSM(MOD_LCTL),    CW_TOGG,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_LPRN,                                 KC_RPRN,    KC_PLUS,    KC_PERC,    KC_MINS,    KC_BSLS,     KC_EQL,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-   OSM(MOD_LSFT),     KC_F13,      KC_AT,    KC_CALC,     KC_SPC,      KC_LT,                                   KC_GT,    XXXXXXX,     KC_DLR,    KC_CIRC,    KC_EXLM,    SELWORD,
+   OSM(MOD_LSFT),     KC_F13,      KC_AT,    XXXXXXX,     KC_SPC,      KC_LT,                                   KC_GT,    KC_HASH,     KC_DLR,    KC_CIRC,    KC_EXLM,    SELWORD,
   //|-----------+-----------+-----------+-----------+-----------+-----------+-----------|    |-----------+-----------+-----------+-----------+-----------+-----------+-----------|
-                                                         KC_BSPC,    _______,     KC_ENT,          KC_SPC,      TT(3),    XXXXXXX
+                                                         KC_BSPC,    _______,    KC_CALC,          KC_SPC,      TT(3),    XXXXXXX
                                                   //`-----------------------------------'    `-----------------------------------'
   ),
     //Raise
@@ -88,11 +90,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Adjust
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------------------.                            ,-----------------------------------------------------------------------.
-           TO(4),      TO(5),    XXXXXXX,    XXXXXXX,    XXXXXXX,      TO(6),                                   TO(0),      KC_P7,      KC_P8,      KC_P9,    XXXXXXX,    XXXXXXX,
+           TO(4),    XXXXXXX,    XXXXXXX,    KC_MPLY,    XXXXXXX,    KC_MUTE,                                  KC_NUM,      KC_P7,      KC_P8,      KC_P9,    XXXXXXX,    KC_BSPC,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                                 XXXXXXX,      KC_P4,      KC_P5,      KC_P6,      KC_P0,    XXXXXXX,
+           TO(5),    KC_AGIN,    KC_MPRV,    XXXXXXX,    KC_MNXT,    KC_VOLU,                                 XXXXXXX,      KC_P4,      KC_P5,      KC_P6,      KC_P0,    XXXXXXX,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                                 XXXXXXX,      KC_P1,      KC_P2,      KC_P3,LT(0,KC_NO),    KC_PENT,
+           TO(6),    KC_UNDO,     KC_CUT,    KC_COPY,    KC_PSTE,    KC_VOLD,                                 XXXXXXX,      KC_P1,      KC_P2,      KC_P3,LT(0,KC_NO),    KC_PENT,
   //|-----------+-----------+-----------+-----------+-----------+-----------+-----------|    |-----------+-----------+-----------+-----------+-----------+-----------+-----------|
                                                          XXXXXXX,    _______,      TO(0),           TO(0),    _______,    KC_RALT
                                                   //`-----------------------------------'    `-----------------------------------'
@@ -100,11 +102,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //RGB Setup
    [4] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------------------.                            ,-----------------------------------------------------------------------.
-         RGB_TOG,    RGB_MOD,    RGB_SAI,    RGB_HUI,    RGB_SPI,    RGB_VAI,                                 XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+         RGB_TOG,    RGB_MOD,    RGB_SAI,    RGB_HUI,    RGB_SPI,    RGB_VAI,                                 QK_BOOT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
          XXXXXXX,   RGB_RMOD,    RGB_SAD,    RGB_HUD,    RGB_SPD,    RGB_VAD,                                 XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-         KC_LSFT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                                 XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    QK_BOOT,
+         KC_LSFT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                                 XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
   //|-----------+-----------+-----------+-----------+-----------+-----------+-----------|    |-----------+-----------+-----------+-----------+-----------+-----------+-----------|
                                                          XXXXXXX,      TO(0),    XXXXXXX,         XXXXXXX,      TO(0),    XXXXXXX
                                                   //`-----------------------------------'    `-----------------------------------'
@@ -311,7 +313,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(0,KC_TAB):
             if (!record->tap.count && record->event.pressed) {
-                tap_code16(KC_ESC); // Intercept hold function to send ESC
+                tap_code16(QK_GESC); // Intercept hold function to send ESC
                 return false;
             }
             return true;             // Return true for normal processing of tap keycode
@@ -388,6 +390,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code16(KC_COMM); // Intercept hold function to send Comma
             }
             return false;
+        case M_EURSYM:
+            if (record->event.pressed) {
+                // when keycode M_EURSYM is pressed
+                register_code(KC_RALT);
+                tap_code(KC_P0);
+                tap_code(KC_P1);
+                tap_code(KC_P2);
+                tap_code(KC_P8);
+                unregister_code(KC_RALT);
+            } else {
+                // when keycode M_EURSYM is released
+            }
+            break;
     }
     return true;
 }
