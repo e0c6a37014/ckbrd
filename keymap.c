@@ -485,7 +485,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case LT(0,KC_5):
         case LT(0,KC_6):
         case LT(0,KC_7):
-            return 120;
+            return 150;
         case LT(0,KC_TAB): 
         case LSFT_T(KC_ESC):
         case TT(1):
@@ -543,7 +543,8 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 void caps_word_set_user(bool active) {
     if (active) {
         // Turn on indicator light when Caps Word activates.
-        rgb_matrix_set_color(0, 75, 40, 30);
+        rgb_matrix_set_color(0, 0, 70, 0);
+        rgb_matrix_set_color(27, 0, 70, 0);
     }
         // Set RGB to default effect
     else {

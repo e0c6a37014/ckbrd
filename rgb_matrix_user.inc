@@ -21,22 +21,22 @@ static bool default_effect(effect_params_t* params) {
 
 static bool effect_lower(effect_params_t* params) {
   RGB_MATRIX_USE_LIMITS(led_min, led_max);
-  rgb_matrix_set_color(5, 100, 0, 0);
+  rgb_matrix_set_color(5, 120, 0, 0);
   rgb_matrix_set_color(32, 0, 0, 0);
   return rgb_matrix_check_finished_leds(led_max);
 }
 
 static bool effect_raise(effect_params_t* params) {
   RGB_MATRIX_USE_LIMITS(led_min, led_max);
-  rgb_matrix_set_color(32, 100, 0, 0);
+  rgb_matrix_set_color(32, 120, 0, 0);
   rgb_matrix_set_color(5, 0, 0, 0);
   return rgb_matrix_check_finished_leds(led_max);
 }
 
 static bool effect_adjust(effect_params_t* params) {
   RGB_MATRIX_USE_LIMITS(led_min, led_max);
-  rgb_matrix_set_color(32, 40, 0, 100);
-  rgb_matrix_set_color(5, 40, 0, 100);
+  rgb_matrix_set_color(32, 50, 0, 120);
+  rgb_matrix_set_color(5, 50, 0, 120);
 
   return rgb_matrix_check_finished_leds(led_max);
 }
@@ -60,14 +60,15 @@ static bool effect_qwerty(effect_params_t* params) {
     rgb_matrix_set_color(i, 3, 0, 20);
   }
   for (uint8_t i = 27; i < 33; i++) {
-    rgb_matrix_set_color(i, 3, 0, 20);
+    rgb_matrix_set_color(i, 3, 0, 16);
   }
   return rgb_matrix_check_finished_leds(led_max);
 }
 
 static bool effect_caps_word(effect_params_t* params) {
   RGB_MATRIX_USE_LIMITS(led_min, led_max);
-  rgb_matrix_set_color(0, 75, 40, 30);
+  rgb_matrix_set_color(0, 0, 70, 0);
+  rgb_matrix_set_color(27, 0, 70, 0);
   return rgb_matrix_check_finished_leds(led_max);
 }
 
@@ -77,8 +78,9 @@ static bool effect_caps_word_default(effect_params_t* params) {
   for (uint8_t i = led_min; i < led_max; i++) {
     rgb_matrix_set_color(i, 0, 0, 0);
   } 
-  rgb_matrix_set_color(0, 75, 40, 30);
+  rgb_matrix_set_color(0, 0, 70, 0);
+  rgb_matrix_set_color(27, 0, 70, 0);
   return rgb_matrix_check_finished_leds(led_max);
 }
 
-#endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS7
+#endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS
