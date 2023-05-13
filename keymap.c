@@ -90,11 +90,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Adjust
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------------------.                            ,-----------------------------------------------------------------------.
-           TO(4),    XXXXXXX,    XXXXXXX,    KC_MPLY,    XXXXXXX,    KC_MUTE,                                  KC_NUM,      KC_P7,      KC_P8,      KC_P9,    XXXXXXX,    KC_BSPC,
+           TO(4),    XXXXXXX,    KC_MPRV,    KC_MPLY,    KC_MNXT,    KC_MUTE,                                  KC_NUM,      KC_P7,      KC_P8,      KC_P9,    XXXXXXX,    KC_BSPC,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-           TO(5),    KC_AGIN,    KC_MPRV,    XXXXXXX,    KC_MNXT,    KC_VOLU,                                 XXXXXXX,      KC_P4,      KC_P5,      KC_P6,      KC_P0,    XXXXXXX,
+           TO(5), LT(0,KC_1), LT(0,KC_2), LT(0,KC_3), LT(0,KC_4), LT(0,KC_5),                              LT(0,KC_6), LT(0,KC_7), LT(0,KC_8),       KC_9,      KC_P0,    XXXXXXX,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-           TO(6),    KC_UNDO,     KC_CUT,    KC_COPY,    KC_PSTE,    KC_VOLD,                                 XXXXXXX,      KC_P1,      KC_P2,      KC_P3,LT(0,KC_NO),    KC_PENT,
+           TO(6),    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_VOLD,                                 KC_VOLU,      KC_P1,    KC_COMM,     KC_DOT,LT(0,KC_NO),    KC_PENT,
   //|-----------+-----------+-----------+-----------+-----------+-----------+-----------|    |-----------+-----------+-----------+-----------+-----------+-----------+-----------|
                                                          XXXXXXX,    _______,      TO(0),           TO(0),    _______,    KC_RALT
                                                   //`-----------------------------------'    `-----------------------------------'
@@ -102,13 +102,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //RGB Setup
    [4] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------------------.                            ,-----------------------------------------------------------------------.
-         RGB_TOG,    RGB_MOD,    RGB_SAI,    RGB_HUI,    RGB_SPI,    RGB_VAI,                                 QK_BOOT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+         RGB_TOG,    RGB_MOD,    RGB_SAI,    RGB_HUI,    RGB_SPI,    RGB_VAI,                                 XXXXXXX,      KC_P7,      KC_P8,      KC_P9,     KC_DEL,    KC_BSPC,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-         XXXXXXX,   RGB_RMOD,    RGB_SAD,    RGB_HUD,    RGB_SPD,    RGB_VAD,                                 XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+         XXXXXXX,   RGB_RMOD,    RGB_SAD,    RGB_HUD,    RGB_SPD,    RGB_VAD,                                 XXXXXXX,      KC_P4,      KC_P5,      KC_P6,      KC_P0,    XXXXXXX,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-         KC_LSFT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                                 XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+         KC_LSFT,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                                 XXXXXXX,      KC_P1,      KC_P2,      KC_P3,LT(0,KC_NO),     KC_ENT,
   //|-----------+-----------+-----------+-----------+-----------+-----------+-----------|    |-----------+-----------+-----------+-----------+-----------+-----------+-----------|
-                                                         XXXXXXX,      TO(0),    XXXXXXX,         XXXXXXX,      TO(0),    XXXXXXX
+                                                         XXXXXXX,      TO(0),    QK_BOOT,         XXXXXXX,      TO(0),    KC_RALT
                                                   //`-----------------------------------'    `-----------------------------------'
   ),
     //QWERTY
@@ -313,7 +313,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(0,KC_TAB):
             if (!record->tap.count && record->event.pressed) {
-                tap_code16(QK_GESC); // Intercept hold function to send ESC
+                tap_code16(KC_ESC); // Intercept hold function to send ESC
                 return false;
             }
             return true;             // Return true for normal processing of tap keycode
@@ -486,7 +486,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case LT(0,KC_6):
         case LT(0,KC_7):
             return 120;
-        case LT(0,KC_TAB):
+        case LT(0,KC_TAB): 
         case LSFT_T(KC_ESC):
         case TT(1):
         case TT(2):
