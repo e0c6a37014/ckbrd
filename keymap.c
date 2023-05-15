@@ -34,6 +34,14 @@ enum {
   TRIPLE_HOLD = 6
 };
 
+enum combos {
+    BS_Q_ESC,
+    SC_O_SLS,
+    Y_I_DOT,
+    COMBO_LENGTH
+};
+uint16_t COMBO_LEN = COMBO_LENGTH;
+
 
 //MACROS
 enum custom_keycodes {
@@ -496,6 +504,18 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
+
+//Combos
+const uint16_t PROGMEM bqe_combo[] = {KC_BSPC, KC_QUOT, LSFT_T(KC_ESC), COMBO_END};
+const uint16_t PROGMEM sos_combo[] = {KC_SCLN, KC_O, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM yid_combo[] = {KC_Y, KC_I, KC_DOT, COMBO_END};
+
+combo_t key_combos[] = {
+    [BS_Q_ESC] = COMBO(bqe_combo, KC_MUTE),
+    [SC_O_SLS] = COMBO(sos_combo, KC_VOLU),
+    [Y_I_DOT] = COMBO(yid_combo, KC_VOLD),
+
+};
 
 #ifdef RGB_MATRIX_ENABLE
 //RGB Layer control
