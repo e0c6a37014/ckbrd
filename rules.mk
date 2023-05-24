@@ -8,6 +8,7 @@ DEBOUNCE_TYPE = sym_eager_pk
 CAPS_WORD_ENABLE = yes
 TAP_DANCE_ENABLE = yes
 COMBO_ENABLE = yes
+TRI_LAYER_ENABLE = yes
 SRC += features/select_word.c
 
 KEY_OVERRIDE_ENABLE = yes
