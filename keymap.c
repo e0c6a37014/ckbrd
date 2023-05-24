@@ -529,14 +529,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     case L_ADJUST:
         rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_effect_adjust);
         break;
-    case L_QWERTY:
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_effect_qwerty);
-        break;
     case L_GAME:
         rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_effect_game);
-        break;
-    case L_RGB:
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_BAND_VAL);
         break;
     default:
         if (!is_caps_word_on()) {
