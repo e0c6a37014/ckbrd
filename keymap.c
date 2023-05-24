@@ -97,11 +97,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Adjust
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------------------.                            ,-----------------------------------------------------------------------.
-           TO(4),    XXXXXXX,    KC_MPRV,    KC_MPLY,    KC_MNXT,    KC_MUTE,                                  KC_NUM,      KC_P7,      KC_P8,      KC_P9,    XXXXXXX,    KC_BSPC,
+           TO(4),    XXXXXXX,    KC_MPRV,    KC_MPLY,    KC_MNXT,    KC_MUTE,                                 XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX, LT(0,M_SH),    KC_BSPC,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-           TO(5), LT(0,KC_1), LT(0,KC_2), LT(0,KC_3), LT(0,KC_4), LT(0,KC_5),                              LT(0,KC_6), LT(0,KC_7), LT(0,KC_8),       KC_9,      KC_P0,    XXXXXXX,
+           TO(5), LT(0,KC_1), LT(0,KC_2), LT(0,KC_3), LT(0,KC_4), LT(0,KC_5),                              LT(0,KC_6), LT(0,KC_7), LT(0,KC_8),       KC_9,      KC_P0, LT(0,M_ZH),
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-           TO(6),    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_VOLD,                                 KC_VOLU,      KC_P1,    KC_COMM,     KC_DOT,LT(0,KC_NO),    KC_PENT,
+           TO(6),    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_VOLD,                                 KC_VOLU,    XXXXXXX,    KC_COMM,     KC_DOT,LT(0,KC_NO),    XXXXXXX,
   //|-----------+-----------+-----------+-----------+-----------+-----------+-----------|    |-----------+-----------+-----------+-----------+-----------+-----------+-----------|
                                                          XXXXXXX,    _______,      TO(0),           TO(0),    _______,    KC_RALT
                                                   //`-----------------------------------'    `-----------------------------------'
