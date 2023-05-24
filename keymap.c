@@ -482,6 +482,41 @@ combo_t key_combos[] = {
 
 };
 
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LT(7,KC_ENT):
+        case LSFT_T(KC_ESC):
+            // Immediately select the hold action when another key is pressed.
+            return true;
+        default:
+            // Do not select the hold action when another key is pressed.
+            return false;
+    }
+}
+
+//Caps Word config
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied.
+        case KC_A ... KC_Z:
+        case KC_MINS:
+            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+            return true;
+
+        // Keycodes that continue Caps Word, without shifting.
+        case KC_1 ... KC_0:
+        case KC_BSPC:
+        case KC_DEL:
+        case KC_UNDS:
+        case TL_LOWR:
+        case TL_UPPR:
+            return true;
+
+        default:
+            return false;  // Deactivate Caps Word.
+    }
+}
+
 #ifdef RGB_MATRIX_ENABLE
 //RGB Layer control
 layer_state_t layer_state_set_user(layer_state_t state) {
