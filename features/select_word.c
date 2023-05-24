@@ -131,10 +131,13 @@ bool process_select_word(uint16_t keycode, keyrecord_t* record,
       break;
 
     case STATE_SELECTED:
-      if (keycode == KC_ESC) {
-        tap_code(KC_RGHT);
-        state = STATE_NONE;
-        return false;
+      switch(keycode) {
+        case KC_ESC:
+        case QK_GESC:
+        case LSFT_T(KC_ESC):
+          tap_code(KC_RGHT);
+          state = STATE_NONE;
+          return false;
       }
       // Fallthrough intended.
     default:
