@@ -46,6 +46,8 @@ enum custom_keycodes {
   ALT_OSL1 = 0,  // Tap Dance Alt key - hold for alt, tap for one-shot layer hold, tap and hold for layer hold + alt hold
   MACRO_THAT_DOESNT_DO_ANYTHING,    // Empty macro needs to be here because the third macro doesn't work ever for some reason
   M_EURSYM,
+  M_SH,
+  M_ZH,
 };
 
 //Functions associated with tap dances
@@ -348,6 +350,40 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // when keycode M_EURSYM is released
             }
             break;
+        case LT(0,M_SH):
+            if (record->tap.count && record->event.pressed) {   //Send "š" on press
+                register_code(KC_RALT);
+                tap_code(KC_P0);
+                tap_code(KC_P1);
+                tap_code(KC_P5);
+                tap_code(KC_P4);
+                unregister_code(KC_RALT);
+            } else if (record->event.pressed) { //Send "Š" on hold
+                register_code(KC_RALT);
+                tap_code(KC_P0);
+                tap_code(KC_P1);
+                tap_code(KC_P3);
+                tap_code(KC_P8);
+                unregister_code(KC_RALT);
+            }
+            return false;
+        case LT(0,M_ZH):
+            if (record->tap.count && record->event.pressed) {   //Send "ž" on press
+                register_code(KC_RALT);
+                tap_code(KC_P0);
+                tap_code(KC_P1);
+                tap_code(KC_P5);
+                tap_code(KC_P8);
+                unregister_code(KC_RALT);
+            } else if (record->event.pressed) { //Send "Ž" on hold
+                register_code(KC_RALT);
+                tap_code(KC_P0);
+                tap_code(KC_P1);
+                tap_code(KC_P4);
+                tap_code(KC_P2);
+                unregister_code(KC_RALT);
+            }
+            return false;     
     }
     return true;
 }
