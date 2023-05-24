@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Colemak - base
   [0] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------------------.                            ,-----------------------------------------------------------------------.
-    LT(0,KC_TAB),       KC_Q,       KC_W,       KC_F,       KC_P,       KC_G,                                    KC_J,       KC_L,       KC_U,       KC_Y,    KC_SCLN,    KC_BSPC,
+          KC_TAB,       KC_Q,       KC_W,       KC_F,       KC_P,       KC_G,                                    KC_J,       KC_L,       KC_U,       KC_Y,    KC_SCLN,    KC_BSPC,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
    OSM(MOD_LCTL),       KC_A,       KC_R,       KC_S,       KC_T,       KC_D,                                    KC_H,       KC_N,       KC_E,       KC_I,       KC_O,    KC_QUOT,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
@@ -264,12 +264,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 */
     switch (keycode) {
-        case LT(0,KC_TAB):
-            if (!record->tap.count && record->event.pressed) {
-                tap_code16(KC_ESC); // Intercept hold function to send ESC
-                return false;
-            }
-            return true;             // Return true for normal processing of tap keycode
+         // Return true for normal processing of tap keycode
         case LT(0,KC_1):
             if (!record->tap.count && record->event.pressed) {
                 tap_code16(KC_EXLM); // Intercept hold function to send "!"
