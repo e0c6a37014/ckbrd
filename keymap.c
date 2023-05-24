@@ -28,10 +28,7 @@ typedef struct {
 enum {
   SINGLE_TAP = 1,
   SINGLE_HOLD = 2,
-  DOUBLE_TAP = 3,
   DOUBLE_HOLD = 4,
-  TRIPLE_TAP = 5,
-  TRIPLE_HOLD = 6
 };
 
 enum combos {
@@ -356,20 +353,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 #endif  //END OLED config
 
-
 //Tap Dance config
 int cur_dance (tap_dance_state_t *state) {
   if (state->count == 1) {
     if (state->pressed) return SINGLE_HOLD;
     else return SINGLE_TAP;
   }
-  else if (state->count == 2) {
-    if (state->pressed) return DOUBLE_HOLD;
-    else return DOUBLE_TAP;
-  }
-  else if (state->count == 3) {
-    if (state->interrupted || !state->pressed)  return TRIPLE_TAP;
-    else return TRIPLE_HOLD;
+  else if (state->count == 2 && state->pressed) {
+    return DOUBLE_HOLD;
   }
   else return 8;
 }
@@ -384,7 +375,6 @@ void alt_finished (tap_dance_state_t *state, void *user_data) {
   switch (alttap_state.state) {
     case SINGLE_TAP: set_oneshot_layer(2, ONESHOT_START); clear_oneshot_layer_state(ONESHOT_PRESSED); break;
     case SINGLE_HOLD: register_code(KC_LALT); break;
-    //case DOUBLE_TAP: set_oneshot_layer(2, ONESHOT_START); set_oneshot_layer(2, ONESHOT_PRESSED); break;       //uncomment to use layer lock
     case DOUBLE_HOLD: register_code(KC_LALT); layer_on(2); break;
   }
 }
@@ -393,7 +383,6 @@ void alt_reset (tap_dance_state_t *state, void *user_data) {
   switch (alttap_state.state) {
     case SINGLE_TAP: break;
     case SINGLE_HOLD: unregister_code(KC_LALT); break;
-    case DOUBLE_TAP: break;
     case DOUBLE_HOLD: layer_off(2); unregister_code(KC_LALT); break;
   }
   alttap_state.state = 0;
