@@ -39,7 +39,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 #define ONESHOT_TIMEOUT 800
 
-#define CAPS_WORD_IDLE_TIMEOUT 2000
+#define CAPS_WORD_IDLE_TIMEOUT 1400
 
 //#define QUICK_TAP_TERM 0
 #define NO_MUSIC_MODE
