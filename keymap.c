@@ -74,11 +74,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //Lower
   [1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------------------------.                            ,-----------------------------------------------------------------------.
-         QK_GESC,   M_EURSYM,    KC_HOME,      KC_UP,     KC_END,LT(0,KC_LBRC),                         LT(0,KC_RBRC),    KC_AMPR,    KC_ASTR,    KC_UNDS,    KC_PIPE,     KC_DEL,
+         QK_GESC,    XXXXXXX,    KC_HOME,      KC_UP,     KC_END,LT(0,KC_LBRC),                         LT(0,KC_RBRC),    KC_AMPR,    KC_ASTR,    KC_UNDS,    KC_PIPE,     KC_DEL,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
    OSM(MOD_LCTL),    CW_TOGG,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_LPRN,                                 KC_RPRN,    KC_PLUS,    KC_PERC,    KC_MINS,    KC_BSLS,     KC_EQL,
   //|-----------+-----------+-----------+-----------+-----------+-----------|                            |-----------+-----------+-----------+-----------+-----------+-----------|
-   OSM(MOD_LSFT),     KC_F13,      KC_AT,    XXXXXXX,     KC_SPC,      KC_LT,                                   KC_GT,    KC_HASH,     KC_DLR,    KC_CIRC,    KC_EXLM,    SELWORD,
+   OSM(MOD_LSFT),     KC_F13,      KC_AT,   M_EURSYM,     KC_SPC,      KC_LT,                                   KC_GT,    KC_HASH,     KC_DLR,    KC_CIRC,    KC_EXLM,    SELWORD,
   //|-----------+-----------+-----------+-----------+-----------+-----------+-----------|    |-----------+-----------+-----------+-----------+-----------+-----------+-----------|
                                                          KC_BSPC,    _______,    KC_CALC,          KC_SPC,      TT(3),    XXXXXXX
                                                   //`-----------------------------------'    `-----------------------------------'
