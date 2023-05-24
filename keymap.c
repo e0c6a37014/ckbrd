@@ -556,8 +556,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 void caps_word_set_user(bool active) {
     if (active) {
         // Turn on indicator light when Caps Word activates.
-        rgb_matrix_set_color(0, 0, 70, 0);
-        rgb_matrix_set_color(27, 0, 70, 0);
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_effect_caps_word);
     }
         // Set RGB to default effect
     else {
